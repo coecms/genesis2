@@ -8,7 +8,7 @@ default: genesis2
 .SUFFIXES:
 .SUFFIXES: .f90 .o
 
-OBJS=mod_indata.o mod_rundata.o mod_cntlscm.o mod_logic.o
+OBJS=mod_indata.o mod_rundata.o mod_cntlscm.o mod_logic.o mod_parameters.o
 SRCS=$(subst .o,.f90,$(OBJS))
 MODS=$(subst .o,.mod,$(OBJS))
 
@@ -19,6 +19,8 @@ genesis2.o : $(OBJS)
 
 genesis2: genesis2.o $(OBJS)
 	$(LD) $(LOPTS) -o $@ $^
+
+$(OBJS) : mod_parameters.o
 
 clean:
 	rm -rf $(OBJS) $(MODS) genesis2.o genesis2
