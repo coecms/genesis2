@@ -1,8 +1,9 @@
 program genesis2
   
   use mod_cntlscm
-  use mod_indata
   use mod_rundata
+  use mod_indata
+  use mod_logic
 
   implicit none
 
@@ -29,10 +30,15 @@ program genesis2
   call default_indata()
   read(template_handle, RUNDATA)
 
+  call init_logic(1, 1)
+  call default_logic()
+  read(template_handle, LOGIC)
+
   close(template_handle)
 
   write(namelist_handle, CNTLSCM)
   write(namelist_handle, INDATA)
   write(namelist_handle, RUNDATA)
+  write(namelist_handle, LOGIC)
 
 end program genesis2
