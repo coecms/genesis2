@@ -10,7 +10,7 @@ module mod_rundata
   INTEGER :: resdump_days, dump_step
   INTEGER, DIMENSION(4) :: dump_days
   INTEGER :: change_clim, min_trop_level, max_trop_level
-  INTEGER :: ntml, nbdsc, ntdcs
+  INTEGER :: ntml, nbdsc, ntdsc
   REAL, DIMENSION(:,:), ALLOCATABLE :: zh, snow_free_albedo,  &
         deep_snow_albedo
   REAL, DIMENSION(:), ALLOCATABLE :: albsoil
@@ -30,7 +30,7 @@ module mod_rundata
         ndayin, nminin, nsecin, timestep, ntrad, ntrad1,      &
         exname_in, exname_out, runno_in, runno_out,           &
         resdump_days, dump_step, dump_days, change_clim,      &
-        min_trop_level, max_trop_level, ntml, nbdsc, ntdcs,   &
+        min_trop_level, max_trop_level, ntml, nbdsc, ntdsc,   &
         zh, snow_free_albedo, deep_snow_albedo, albsoil,      &
         sice_alb, land_alb, fland_ctile, tstar_land,          &
         tstar_sea, tstar_sice, dolr_rts, cort, cord, corvn,   &
@@ -139,9 +139,8 @@ contains
 
   END SUBROUTINE init_rundata
 
-  SUBROUTINE default_rundata(row_length, rows)
+  SUBROUTINE default_rundata()
     implicit none
-    integer, intent(in)   :: row_length, rows
 
     if ( .not. allocated(zh) .or.    &
       .not. allocated(snow_free_albedo) .or.    &
@@ -207,7 +206,7 @@ contains
     max_trop_level = 0
     ntml = 0    ! Technically number of boundary layer levels
     nbdsc = 0
-    ntdcs = 0
+    ntdsc = 0
     zh = 500.0
     snow_free_albedo = 0.0
     deep_snow_albedo = 0.0

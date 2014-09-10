@@ -66,9 +66,8 @@ contains
 
   END SUBROUTINE init_indata
 
-  SUBROUTINE default_indata(row_length, rows)
+  SUBROUTINE default_indata()
     implicit none
-    integer, intent(in)   :: row_length, rows
 
     if (.not. allocated(SOIL_TYPE) .or.           &
         .not. allocated(VEG_TYPE)  .or.           &
