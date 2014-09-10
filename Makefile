@@ -12,7 +12,7 @@ OBJS=
 SRCS=$(OBJS,.o=.f90)
 
 .f90.o:
-	$(FC) $(COPTS) -o $< $^
+	$(FC) $(COPTS) -o $@ $<
 
 genesis2: genesis2.o $(OBJS)
 	$(LD) $(LOPTS) -o $@ $^
