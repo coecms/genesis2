@@ -8,16 +8,17 @@ default: genesis2
 .SUFFIXES:
 .SUFFIXES: .f90 .o
 
-OBJS=
-SRCS=$(OBJS,.o=.f90)
+OBJS=mod_indata.o
+SRCS=$(patsubst .o,.f90,$(OBJS))
+MODS=$(patsubst .o,.mod,$(OBJS))
 
-.f90.o:
+%.o : %.f90
 	$(FC) $(COPTS) -o $@ $<
 
 genesis2: genesis2.o $(OBJS)
 	$(LD) $(LOPTS) -o $@ $^
 
 clean:
-	rm -rf $(OBJS) $(MODS) genesis2
+	rm -rf $(OBJS) $(MODS) genesis2.o genesis2
 
 .PHONY: default clean
