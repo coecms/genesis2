@@ -8,9 +8,9 @@ default: genesis2
 .SUFFIXES:
 .SUFFIXES: .f90 .o
 
-OBJS=mod_indata.o
-SRCS=$(patsubst .o,.f90,$(OBJS))
-MODS=$(patsubst .o,.mod,$(OBJS))
+OBJS=mod_indata.o mod_rundata.o
+SRCS=$(subst .o,.f90,$(OBJS))
+MODS=$(subst .o,.mod,$(OBJS))
 
 %.o : %.f90
 	$(FC) $(COPTS) -o $@ $<
