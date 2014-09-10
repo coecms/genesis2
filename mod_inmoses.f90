@@ -1,9 +1,9 @@
 module mod_inmoses
 
-  use mod_parameters
 
   implicit none
   LOGICAL :: init_m_smcl, init_m_fsmc, init_m_sth
+  INTEGER :: smi_opt
   REAL, DIMENSION(:,:,:), ALLOCATABLE :: smcli
   REAL, DIMENSION(:,:), ALLOCATABLE   :: fsmc
   REAL, DIMENSION(:,:,:), ALLOCATABLE :: sth
@@ -26,9 +26,18 @@ module mod_inmoses
   REAL, DIMENSION(:,:), ALLOCATABLE   :: resp_w_ft_acc
   REAL, DIMENSION(:), ALLOCATABLE     :: resp_s_acc
   REAL, DIMENSION(:,:), ALLOCATABLE   :: lw_down
+  REAL, DIMENSION(:,:), ALLOCATABLE   :: frac_typ
 
  
   NAMELIST /INMOSES/                                    &
+    init_m_smcl, init_m_fsmc, init_m_sth, smi_opt,      &
+    smcli, fsmc,  &
+    sth, canopy_height, catch, snow_tile, lai, z0_tile, &
+    tstar_tile, canopy_tile, frac, frac_disturb,        &
+    infil_tile, rgrain, cs, gs, g_leaf_acc,             &
+    g_leaf_phen_acc, npp_ft_acc, resp_w_ft_acc,         &
+    resp_s_acc, lw_down, frac_typ
+
  
 contains
 
@@ -60,6 +69,7 @@ contains
     if( allocated( resp_w_ft_acc )) deallocate( resp_w_ft_acc ) 
     if( allocated( resp_s_acc )) deallocate( resp_s_acc ) 
     if( allocated( lw_down )) deallocate( lw_down ) 
+    if( allocated( frac_typ )) deallocate( frac_typ ) 
 
 
     allocate( smcli(row_length, rows, max_soil_moist_levs) )
@@ -72,6 +82,7 @@ contains
     allocate( z0_tile(row_length * rows, ntype) )
     allocate( tstar_tile(row_length * rows, ntype) )
     allocate( canopy_tile(row_length * rows, max_no_ntiles) )
+    allocate( frac_typ(row_length * rows, ntype) )
     allocate( frac(row_length * rows, ntype) )
     allocate( frac_disturb(row_length * rows) )
     allocate( infil_tile(row_length * rows, max_no_ntiles) )
@@ -88,6 +99,7 @@ contains
   END SUBROUTINE init_inmoses
 
   SUBROUTINE default_inmoses()
+    use mod_parameters
     implicit none
 
     if (                                            &
@@ -112,6 +124,7 @@ contains
           .not. allocated( npp_ft_acc ) .or.        &
           .not. allocated( resp_w_ft_acc ) .or.     &
           .not. allocated( resp_s_acc ) .or.        &
+          .not. allocated( frac_typ ) .or.          &
           .not. allocated( lw_down )                &
           ) then
       write(*,*) "please call init_inmoses before default_inmoses"
@@ -121,6 +134,7 @@ contains
     init_m_smcl     = .FALSE.
     init_m_fsmc     = .FALSE.
     init_m_sth      = .FALSE.
+    smi_opt         = INT_NOVALUE
     smcli           = REAL_NOVALUE
     fsmc            = REAL_NOVALUE
     sth             = REAL_NOVALUE
@@ -143,6 +157,7 @@ contains
     resp_w_ft_acc   = REAL_NOVALUE
     resp_s_acc      = REAL_NOVALUE
     lw_down         = REAL_NOVALUE
+    frac_typ        = REAL_NOVALUE
 
   END SUBROUTINE default_inmoses
 

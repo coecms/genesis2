@@ -1,11 +1,12 @@
 module mod_cntlscm
 
+
   implicit none
   
   INTEGER     :: nfor
   INTEGER     :: model_levels_nml
   INTEGER     :: land_points
-!  INTEGER     :: ts_log_opt         =    2  ! MRD removed
+  INTEGER     :: ts_log_opt 
 
   NAMELIST /CNTLSCM/                                    &
       nfor, model_levels_nml, land_points
@@ -20,12 +21,13 @@ contains
   END SUBROUTINE init_cntlscm
 
   SUBROUTINE default_cntlscm()
+    use mod_parameters
     implicit none
 
-    nfor = 1
-    model_levels_nml = 1
-    land_points = 1
-!    ts_log_opt = 2
+    nfor = INT_NOVALUE
+    model_levels_nml = INT_NOVALUE
+    land_points = INT_NOVALUE
+    ts_log_opt = INT_NOVALUE
 
   END SUBROUTINE default_cntlscm
 

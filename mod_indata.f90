@@ -67,6 +67,7 @@ contains
   END SUBROUTINE init_indata
 
   SUBROUTINE default_indata()
+    use mod_parameters
     implicit none
 
     if (.not. allocated(SOIL_TYPE) .or.           &
@@ -81,29 +82,29 @@ contains
       stop 2
     end if
 
-    SOIL_TYPE(:,:)  = 3
-    VEG_TYPE(:,:)   = 5
-    tapeyear_init   = 1998
-    tapemonth_init  = 1
-    tapeday_init    = 1
-    tapehour_init   = 0
-    tapemin_init    = 0
-    tapesec_init    = 0
-    year_init       = 1998
-    month_init      = 1
-    day_init        = 1
-    hour_init       = 0
-    min_init        = 0
-    sec_init        = 0
-    tconst(:,:)     = 0.0
-    dtday(:,:)      = 0.0
-    dtyear(:,:)     = 0.0
-    lat(:,:)        = 0.0
-    long(:,:)       = 0.0
-    gridbox_area(:,:) = 1e5
-    salt_dim1       = 1
-    salt_dim2       = 1
-    salt_dim3       = 1
+    SOIL_TYPE(:,:)  = INT_NOVALUE
+    VEG_TYPE(:,:)   = INT_NOVALUE
+    tapeyear_init   = INT_NOVALUE
+    tapemonth_init  = INT_NOVALUE
+    tapeday_init    = INT_NOVALUE
+    tapehour_init   = INT_NOVALUE
+    tapemin_init    = INT_NOVALUE
+    tapesec_init    = INT_NOVALUE
+    year_init       = INT_NOVALUE
+    month_init      = INT_NOVALUE
+    day_init        = INT_NOVALUE
+    hour_init       = INT_NOVALUE
+    min_init        = INT_NOVALUE
+    sec_init        = INT_NOVALUE
+    tconst(:,:)     = REAL_NOVALUE
+    dtday(:,:)      = REAL_NOVALUE
+    dtyear(:,:)     = REAL_NOVALUE
+    lat(:,:)        = REAL_NOVALUE
+    long(:,:)       = REAL_NOVALUE
+    gridbox_area(:,:) = REAL_NOVALUE
+    salt_dim1       = INT_NOVALUE
+    salt_dim2       = INT_NOVALUE
+    salt_dim3       = INT_NOVALUE
     gather          = .FALSE.
 
 

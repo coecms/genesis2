@@ -140,6 +140,7 @@ contains
   END SUBROUTINE init_rundata
 
   SUBROUTINE default_rundata()
+    use mod_parameters
     implicit none
 
     if ( .not. allocated(zh) .or.    &
@@ -188,70 +189,70 @@ contains
       stop 3
     end if
 
-    ndayin = 1
-    nminin = 0
-    nsecin = 0
-    timestep = 1800.0
-    ntrad = 6
-    ntrad1 = 1
-    exname_in = 'XXXXXXXX'
-    exname_out = 'XXXXXXXX'
-    runno_in = 0
-    runno_out =  999
-    resdump_days = 1
-    dump_step = 0
-    dump_days = 1
-    change_clim = 10
-    min_trop_level = 0
-    max_trop_level = 0
-    ntml = 0    ! Technically number of boundary layer levels
-    nbdsc = 0
-    ntdsc = 0
-    zh = 500.0
-    snow_free_albedo = 0.0
-    deep_snow_albedo = 0.0
-    albsoil = 0.0
-    sice_alb = 0.0
-    land_alb = 0.0
-    fland_ctile = 0.0
-    tstar_land = 0.0  ! Default calculated from INPROF tstari
-    tstar_sea = 0.0 ! Default calculated from INPROF tstari
-    tstar_sice = 0.0 ! Default calculated from INPROF tstari
-    dolr_rts = 0.0
-    cort = 0.9
-    cord = 0.9
-    corvn = 0.5
-    corw = 0.5
-    cclwp = 0.0
-    orog = 0.0
-    sum_eng_fluxes = 0.0
-    sum_moist_flux = 0.0
-    aerosol_em = 0.0
-    so2_em = 0.0
-    nh3_em = 0.0
-    dms_em = 0.0
-    soot_em = 0.0
-    soot_hilem = 0.0
-    soot = 0.0
-    co2start = 4.9e-4
-    co2end = 4.9e-4
-    co2rate = 0.0
-    co2_emits = 0.0
-    co2flux = 0.0
-    co2 = 0.0
-    tile_frac = 0.0
-    ozone = 0.0
-    aerosol = 0.0
-    so2 = 0.0
-    sthu = 0.0
-    so4_aitken = 0.0
-    so4_accu = 0.0
-    so4_diss = 0.0
-    dms = 0.0
-    nh3 = 0.0
-    soot_new = 0.0
-    soot_cld = 0.0
-    soot_aged = 0.0
+    ndayin           = INT_NOVALUE
+    nminin           = INT_NOVALUE
+    nsecin           = INT_NOVALUE
+    timestep         = REAL_NOVALUE
+    ntrad            = INT_NOVALUE
+    ntrad1           = INT_NOVALUE
+    exname_in        = 'XXXXXXXX'
+    exname_out       = 'XXXXXXXX'
+    runno_in         = INT_NOVALUE
+    runno_out        = INT_NOVALUE
+    resdump_days     = INT_NOVALUE
+    dump_step        = INT_NOVALUE
+    dump_days        = INT_NOVALUE
+    change_clim      = INT_NOVALUE
+    min_trop_level   = INT_NOVALUE
+    max_trop_level   = INT_NOVALUE
+    ntml             = INT_NOVALUE
+    nbdsc            = INT_NOVALUE
+    ntdsc            = INT_NOVALUE
+    zh               = REAL_NOVALUE
+    snow_free_albedo = REAL_NOVALUE
+    deep_snow_albedo = REAL_NOVALUE
+    albsoil          = REAL_NOVALUE
+    sice_alb         = REAL_NOVALUE
+    land_alb         = REAL_NOVALUE
+    fland_ctile      = REAL_NOVALUE
+    tstar_land       = REAL_NOVALUE
+    tstar_sea        = REAL_NOVALUE
+    tstar_sice       = REAL_NOVALUE
+    dolr_rts         = REAL_NOVALUE
+    cort             = REAL_NOVALUE
+    cord             = REAL_NOVALUE
+    corvn            = REAL_NOVALUE
+    corw             = REAL_NOVALUE
+    cclwp            = REAL_NOVALUE
+    orog             = REAL_NOVALUE
+    sum_eng_fluxes   = REAL_NOVALUE
+    sum_moist_flux   = REAL_NOVALUE
+    aerosol_em       = REAL_NOVALUE
+    so2_em           = REAL_NOVALUE
+    nh3_em           = REAL_NOVALUE
+    dms_em           = REAL_NOVALUE
+    soot_em          = REAL_NOVALUE
+    soot_hilem       = REAL_NOVALUE
+    soot             = REAL_NOVALUE
+    co2start         = REAL_NOVALUE
+    co2end           = REAL_NOVALUE
+    co2rate          = REAL_NOVALUE
+    co2_emits        = REAL_NOVALUE
+    co2flux          = REAL_NOVALUE
+    co2              = REAL_NOVALUE
+    tile_frac        = REAL_NOVALUE
+    ozone            = REAL_NOVALUE
+    aerosol          = REAL_NOVALUE
+    so2              = REAL_NOVALUE
+    sthu             = REAL_NOVALUE
+    so4_aitken       = REAL_NOVALUE
+    so4_accu         = REAL_NOVALUE
+    so4_diss         = REAL_NOVALUE
+    dms              = REAL_NOVALUE
+    nh3              = REAL_NOVALUE
+    soot_new         = REAL_NOVALUE
+    soot_cld         = REAL_NOVALUE
+    soot_aged        = REAL_NOVALUE
 
   END SUBROUTINE default_rundata
 
