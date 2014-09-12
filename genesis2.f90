@@ -5,6 +5,7 @@ program genesis2
   use mod_indata
   use mod_logic
   use mod_inmoses
+  use mod_inprof
 
   implicit none
 
@@ -41,6 +42,15 @@ program genesis2
   call default_inmoses()
   read(template_handle, INMOSES)
 
+  call init_inprof(row_length=1, rows=1,            &
+      max_model_levels=model_levels_nml,            &
+      max_wet_levels=model_levels_nml,              &
+      max_soil_temp_levs=6,                         &
+      max_tr_levels=model_levels_nml,               &
+      max_tr_vars=30 )
+  call default_inprof()
+  read(template_handle, INPROF)
+
   close(template_handle)
 
   write(namelist_handle, CNTLSCM)
@@ -48,5 +58,6 @@ program genesis2
   write(namelist_handle, RUNDATA)
   write(namelist_handle, LOGIC)
   write(namelist_handle, INMOSES)
+  write(namelist_handle, INPROF)
 
 end program genesis2

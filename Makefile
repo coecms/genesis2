@@ -9,7 +9,7 @@ default: genesis2
 .SUFFIXES: .f90 .o
 
 OBJS=mod_indata.o mod_rundata.o mod_cntlscm.o mod_logic.o mod_parameters.o
-OBJS+=mod_inmoses.o
+OBJS+=mod_inmoses.o mod_inprof.o
 SRCS=$(subst .o,.f90,$(OBJS))
 MODS=$(subst .o,.mod,$(OBJS))
 
