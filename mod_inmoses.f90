@@ -14,6 +14,7 @@ module mod_inmoses
   REAL, DIMENSION(:,:), ALLOCATABLE   :: z0_tile
   REAL, DIMENSION(:,:), ALLOCATABLE   :: tstar_tile
   REAL, DIMENSION(:,:), ALLOCATABLE   :: canopy_tile
+  REAL, DIMENSION(:), ALLOCATABLE   :: canopy
   REAL, DIMENSION(:,:), ALLOCATABLE   :: frac
   REAL, DIMENSION(:), ALLOCATABLE     :: frac_disturb
   REAL, DIMENSION(:,:), ALLOCATABLE   :: infil_tile
@@ -36,7 +37,7 @@ module mod_inmoses
     tstar_tile, canopy_tile, frac, frac_disturb,        &
     infil_tile, rgrain, cs, gs, g_leaf_acc,             &
     g_leaf_phen_acc, npp_ft_acc, resp_w_ft_acc,         &
-    resp_s_acc, lw_down, frac_typ
+    resp_s_acc, lw_down, frac_typ, canopy
 
  
 contains
@@ -70,6 +71,7 @@ contains
     if( allocated( resp_s_acc )) deallocate( resp_s_acc ) 
     if( allocated( lw_down )) deallocate( lw_down ) 
     if( allocated( frac_typ )) deallocate( frac_typ ) 
+    if( allocated( canopy )) deallocate( canopy )
 
 
     allocate( smcli(row_length, rows, max_soil_moist_levs) )
@@ -95,6 +97,7 @@ contains
     allocate( resp_w_ft_acc(row_length * rows, ntfp) )
     allocate( resp_s_acc(row_length * rows) )
     allocate( lw_down(row_length, rows) )
+    allocate( canopy(max_no_ntiles) )
 
   END SUBROUTINE init_inmoses
 
@@ -125,6 +128,7 @@ contains
           .not. allocated( resp_w_ft_acc ) .or.     &
           .not. allocated( resp_s_acc ) .or.        &
           .not. allocated( frac_typ ) .or.          &
+          .not. allocated( canopy   ) .or.          &
           .not. allocated( lw_down )                &
           ) then
       write(*,*) "please call init_inmoses before default_inmoses"
