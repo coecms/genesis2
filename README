@@ -1,0 +1,2 @@
+This is an attempt to replace the original genesis code.
+Currently it can just read the template.scm and writes the parts that it recognises as a new namelist.scm on the screen.
