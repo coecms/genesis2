@@ -28,7 +28,7 @@ program genesis2
       max_ozone_levels=model_levels_nml,            &
       max_wet_levels=model_levels_nml,              &
       max_soil_moist_levs=6, ntype=18)
-  call default_indata()
+  call default_rundata()
   read(template_handle, RUNDATA)
 
   call init_logic(1, 1)
