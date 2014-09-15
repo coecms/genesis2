@@ -8,22 +8,23 @@ program genesis2
   use mod_inmoses
   use mod_inprof
   use mod_inobsfor
+  use mod_radcloud
 
   implicit none
 
   INTEGER, PARAMETER    :: template_handle = 50
   INTEGER, PARAMETER    :: namelist_handle = 6
 
-  row_length = 1
-  rows = 1
-  max_soil_moist_levs=6
-  max_soil_temp_levs=6
-  ntype=18
+  row_length          = 1
+  rows                = 1
   max_soil_moist_levs = 6
-  ntfp = 5
-  max_no_ntiles = 17
-  ntype = 18
-  max_tr_vars = 30
+  max_soil_temp_levs  = 6
+  ntype               = 18
+  max_soil_moist_levs = 6
+  ntfp                = 5
+  max_no_ntiles       = 17
+  ntype               = 18
+  max_tr_vars         = 30
 
   open(template_handle, file='template.scm')
 
@@ -58,6 +59,10 @@ program genesis2
   call default_inobsfor()
   read(template_handle, INOBSFOR)
 
+  call init_radcloud()
+  call default_radcloud()
+  read(template_handle, RADCLOUD)
+
   close(template_handle)
 
   write(namelist_handle, CNTLSCM)
@@ -67,5 +72,6 @@ program genesis2
   write(namelist_handle, INMOSES)
   write(namelist_handle, INPROF)
   write(namelist_handle, INOBSFOR)
+  write(namelist_handle, RADCLOUD)
 
 end program genesis2
