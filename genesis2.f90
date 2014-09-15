@@ -11,6 +11,7 @@ program genesis2
   use mod_radcloud
   use mod_physwitch
   use mod_ingeofor
+  use mod_namelist
 
   implicit none
 
@@ -30,62 +31,11 @@ program genesis2
 
   open(template_handle, file='template.scm')
 
-  call init_cntlscm()
-  call default_cntlscm()
-  read(template_handle, CNTLSCM)
-
-  call set_all_levels_to( model_levels_nml )
-  max_nfor = nfor
-
-  call init_indata()
-  call default_indata()
-  read(template_handle, INDATA)
-
-  call init_rundata()
-  call default_rundata()
-  read(template_handle, RUNDATA)
-
-  call init_logic()
-  call default_logic()
-  read(template_handle, LOGIC)
-
-  call init_inmoses()
-  call default_inmoses()
-  read(template_handle, INMOSES)
-
-  call init_inprof()
-  call default_inprof()
-  read(template_handle, INPROF)
-
-  call init_inobsfor()
-  call default_inobsfor()
-  read(template_handle, INOBSFOR)
-
-  call init_radcloud()
-  call default_radcloud()
-  read(template_handle, RADCLOUD)
-
-  call init_physwitch()
-  call default_physwitch()
-  read(template_handle, PHYSWITCH)
-
-  rewind(template_handle)
-
-  call init_ingeofor()
-  call default_ingeofor()
-  read(template_handle, INGEOFOR)
+  call read_namelist( template_handle )
 
   close(template_handle)
 
-  write(namelist_handle, CNTLSCM)
-  write(namelist_handle, INDATA)
-  write(namelist_handle, RUNDATA)
-  write(namelist_handle, LOGIC)
-  write(namelist_handle, INMOSES)
-  write(namelist_handle, INPROF)
-  write(namelist_handle, INOBSFOR)
-  write(namelist_handle, RADCLOUD)
-  write(namelist_handle, PHYSWITCH)
-  write(namelist_handle, INGEOFOR)
+  call write_namelist( namelist_handle )
+
 
 end program genesis2

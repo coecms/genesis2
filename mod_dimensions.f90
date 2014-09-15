@@ -2,18 +2,19 @@ module mod_dimensions
   
   implicit none
 
-  integer :: row_length, rows
-  integer :: max_model_levels
-  integer :: max_wet_levels
-  integer :: max_ozone_levels
-  integer :: max_soil_moist_levs
-  integer :: ntype
-  integer :: ntfp
-  integer :: max_no_ntiles
-  integer :: max_soil_temp_levs
-  integer :: max_tr_levels
-  integer :: max_tr_vars
-  integer :: max_nfor
+  integer :: row_length          = 1
+  integer :: rows                = 1
+  integer :: max_model_levels    = 38
+  integer :: max_wet_levels      = 38
+  integer :: max_ozone_levels    = 38
+  integer :: max_soil_moist_levs = 6
+  integer :: ntype               = 18
+  integer :: ntfp                = 5
+  integer :: max_no_ntiles       = 17
+  integer :: max_soil_temp_levs  = 6
+  integer :: max_tr_levels       = 38
+  integer :: max_tr_vars         = 30
+  integer :: max_nfor            = 109
 
 contains
 
