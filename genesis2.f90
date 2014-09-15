@@ -10,6 +10,7 @@ program genesis2
   use mod_inobsfor
   use mod_radcloud
   use mod_physwitch
+  use mod_ingeofor
 
   implicit none
 
@@ -68,6 +69,12 @@ program genesis2
   call default_physwitch()
   read(template_handle, PHYSWITCH)
 
+  rewind(template_handle)
+
+  call init_ingeofor()
+  call default_ingeofor()
+  read(template_handle, INGEOFOR)
+
   close(template_handle)
 
   write(namelist_handle, CNTLSCM)
@@ -79,5 +86,6 @@ program genesis2
   write(namelist_handle, INOBSFOR)
   write(namelist_handle, RADCLOUD)
   write(namelist_handle, PHYSWITCH)
+  write(namelist_handle, INGEOFOR)
 
 end program genesis2

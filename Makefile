@@ -11,6 +11,7 @@ default: genesis2
 FIRST_MODS=mod_parameters.o mod_dimensions.o
 OBJS=mod_indata.o mod_rundata.o mod_cntlscm.o mod_logic.o mod_inprof.o
 OBJS+=mod_inmoses.o mod_inprof.o mod_inobsfor.o mod_radcloud.o mod_physwitch.o
+OBJS+=mod_ingeofor.o
 SRCS=$(subst .o,.f90,$(OBJS))
 MODS=$(subst .o,.mod,$(OBJS) $(FIRST_MODS))
 
