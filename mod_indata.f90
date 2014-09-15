@@ -36,9 +36,9 @@ module mod_indata
   
 contains
 
-  SUBROUTINE init_indata(row_length, rows)
+  SUBROUTINE init_indata()
+    use mod_dimensions
     implicit none
-    integer, intent(in)   :: row_length, rows
 
     if (allocated(SOIL_TYPE)) deallocate (SOIL_TYPE)
     allocate( SOIL_TYPE(row_length, rows) )

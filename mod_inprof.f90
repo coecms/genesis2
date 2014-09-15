@@ -36,11 +36,9 @@ module mod_inprof
 
 contains
 
-  SUBROUTINE init_inprof(row_length, rows, max_model_levels,  &
-      max_wet_levels, max_soil_temp_levs, max_tr_levels, max_tr_vars)
+  SUBROUTINE init_inprof()
+    use mod_dimensions
     implicit none
-    integer, intent(in)   :: row_length, rows, max_model_levels, &
-        max_wet_levels, max_soil_temp_levs, max_tr_levels, max_tr_vars
 
     if( allocated( ui ))            deallocate( ui )
     if( allocated( vi ))            deallocate( vi )

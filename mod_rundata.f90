@@ -43,11 +43,9 @@ module mod_rundata
  
 contains
 
-  SUBROUTINE init_rundata(row_length, rows, max_model_levels, ntypes, &
-        max_ozone_levels, max_wet_levels, max_soil_moist_levs, ntype)
+  SUBROUTINE init_rundata()
+    use mod_dimensions
     implicit none
-    integer, intent(in)   :: row_length, rows, max_model_levels, ntypes, &
-      max_ozone_levels, max_wet_levels, max_soil_moist_levs, ntype
 
 
     if( allocated( zh )) deallocate( zh ) 

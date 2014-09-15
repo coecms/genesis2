@@ -42,11 +42,9 @@ module mod_inmoses
  
 contains
 
-  SUBROUTINE init_inmoses(row_length, rows, max_soil_moist_levs,    &
-        ntfp, max_no_ntiles, ntype)
+  SUBROUTINE init_inmoses()
+    use mod_dimensions
     implicit none
-    integer, intent(in)   :: row_length, rows, max_soil_moist_levs, &
-        ntfp, max_no_ntiles, ntype
 
     if( allocated( smcli )) deallocate( smcli ) 
     if( allocated( fsmc )) deallocate( fsmc ) 

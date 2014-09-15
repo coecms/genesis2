@@ -13,9 +13,8 @@ module mod_cntlscm
 
 contains
 
-  SUBROUTINE init_cntlscm(row_length, rows)
+  SUBROUTINE init_cntlscm()
     implicit none
-    integer, intent(in)   :: row_length, rows
 
 
   END SUBROUTINE init_cntlscm

@@ -26,9 +26,9 @@ module mod_logic
  
 contains
 
-  SUBROUTINE init_logic(row_length, rows)
+  SUBROUTINE init_logic()
+    use mod_dimensions
     implicit none
-    integer, intent(in)   :: row_length, rows
 
     if ( allocated( land_sea_mask ) ) deallocate( land_sea_mask )
     if ( allocated( land_ice_mask ) ) deallocate( land_ice_mask )
