@@ -9,6 +9,7 @@ program genesis2
   use mod_inprof
   use mod_inobsfor
   use mod_radcloud
+  use mod_physwitch
 
   implicit none
 
@@ -63,6 +64,10 @@ program genesis2
   call default_radcloud()
   read(template_handle, RADCLOUD)
 
+  call init_physwitch()
+  call default_physwitch()
+  read(template_handle, PHYSWITCH)
+
   close(template_handle)
 
   write(namelist_handle, CNTLSCM)
@@ -73,5 +78,6 @@ program genesis2
   write(namelist_handle, INPROF)
   write(namelist_handle, INOBSFOR)
   write(namelist_handle, RADCLOUD)
+  write(namelist_handle, PHYSWITCH)
 
 end program genesis2
